@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Old Unit Converter</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <footer id="footer">
+    <p style="margin-top: 12px;">Yona</p>
+  </footer>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    
+    function PyeongToSquareMeter() {
+      const [amount, setAmount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      const reset = () => setAmount(0);
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current)
+      };
+      return (
+        <div className="converter">
+          <div className="inputGrid">
+            <label htmlFor="pyeong">Pyeong</label>
+            <input 
+              value={inverted ? (amount / 3.3058).toFixed(2) : amount} 
+              id="pyeong" 
+              type="number" 
+              onChange={onChange}
+              disabled={inverted} 
+            />
+            <label htmlFor="squareMeter" className="secondLabel">Square meter</label>
+            <input 
+              value={inverted ? amount : (amount * 3.3058).toFixed(2)} 
+              id="squareMeter" 
+              type="number" 
+              disabled={!inverted}
+              onChange={onChange}
+            />
+          </div>
+          <div className="buttons">
+            <button onClick={reset}>Reset</button>
+            <button onClick={onInvert}>{inverted ? "Pyeong➡️Square meter" : "Pyeong⬅️Square meter"}</button>
+          </div>
+          {amount < 0 ? <p className="alert">Please write a positive number</p> : null}
+        </div>
+      )
+    }
+
+    function LiToKM() {
+      const [amount, setAmount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      const reset = () => setAmount(0);
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current)
+      };
+      return (
+        <div className="converter">
+          <div className="inputGrid">
+            <label htmlFor="li">Li</label>
+            <input 
+              value={inverted ? (amount / 0.4).toFixed(2) : amount} 
+              id="li" 
+              type="number" 
+              onChange={onChange}
+              disabled={inverted} 
+            />
+            <label htmlFor="kilometer" className="secondLabel">Kilometer</label>
+            <input 
+              value={inverted ? amount : (amount * 0.4).toFixed(2)} 
+              id="kilometer" 
+              type="number" 
+              disabled={!inverted}
+              onChange={onChange}
+            />
+          </div>
+          <div className="buttons">
+            <button onClick={reset}>Reset</button>
+            <button onClick={onInvert}>{inverted ? "Li➡️Kilometer" : "Li⬅️Kilometer"}</button>
+          </div>
+          {amount < 0 ? <p className="alert">Please write a positive number</p> : null}
+        </div>
+      )
+    }
+
+    function GeunToGramForMeat() {
+      const [amount, setAmount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      const reset = () => setAmount(0);
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current)
+      };
+      return (
+        <div className="converter">
+          <div className="inputGrid">
+            <label htmlFor="geun">Geun</label>
+            <input 
+              value={inverted ? (amount / 600).toFixed(2) : amount} 
+              id="geun" 
+              type="number" 
+              onChange={onChange}
+              disabled={inverted} 
+            />
+            <label htmlFor="gram" className="secondLabel">Gram</label>
+            <input 
+              value={inverted ? amount : Math.round(amount * 600)} 
+              id="gram" 
+              type="number" 
+              disabled={!inverted}
+              onChange={onChange}
+            />
+          </div>
+          <div className="buttons">
+            <button onClick={reset}>Reset</button>
+            <button onClick={onInvert}>{inverted ? "Geun➡️Gram" : "Geun⬅️Gram"}</button>
+          </div>
+          {amount < 0 ? <p className="alert">Please write a positive number</p> : null}
+        </div>
+      )
+    }
+
+    function GeunToGramForVeggie() {
+      const [amount, setAmount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      const reset = () => setAmount(0);
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current)
+      };
+      return (
+        <div className="converter">
+          <div className="inputGrid">
+            <label htmlFor="geun">Geun</label>
+            <input 
+              value={inverted ? (amount / 375).toFixed(2) : amount} 
+              id="geun" 
+              type="number" 
+              onChange={onChange}
+              disabled={inverted} 
+            />
+            <label htmlFor="gram" className="secondLabel">Gram</label>
+            <input 
+              value={inverted ? amount : Math.round(amount * 375)} 
+              id="gram" 
+              type="number" 
+              disabled={!inverted}
+              onChange={onChange}
+            />
+          </div>
+          <div className="buttons">
+            <button onClick={reset}>Reset</button>
+            <button onClick={onInvert}>{inverted ? "Geun➡️Gram" : "Geun⬅️Gram"}</button>
+          </div>
+          {amount < 0 ? <p className="alert">Please write a positive number</p> : null}
+        </div>
+      )
+    }
+
+    function App() {
+      const [index, setIndex] = React.useState("x");
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      };
+      return (
+        <div>
+          <header style={{backgroundColor: "yellow"}}>
+            <h1 style={{textAlign: "center", padding: "40px", color: "green"}}>👻Old Unit Converter🐲</h1>
+            <div style={{display: "flex", justifyContent: "center", paddingBottom: "40px"}}>
+              <select value={index} onChange={onSelect} style={{padding: "7px", backgroundColor: "aquamarine"}}>
+                <option value="x">Select your units</option>
+                <option value="0">Pyeong(평) & Square meter</option>
+                <option value="1">Li(리) & Kilometer</option>
+                <optgroup label="Geun(근) & Gram">
+                  <option value="2">for 🍖</option>
+                  <option value="3">for 🥕</option>
+                </optgroup>
+              </select>
+            </div>
+          </header>
+          
+          <section style={{height: "30px"}} />
+          {index === "x" ? <p style={{textAlign: "center"}}>Please select units</p> : null}
+          {index === "0" ? <PyeongToSquareMeter /> : null}
+          {index === "1" ? <LiToKM /> : null}
+          {index === "2" ? <GeunToGramForMeat /> : null}
+          {index === "3" ? <GeunToGramForVeggie /> : null}
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
